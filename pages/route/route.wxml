@@ -1,0 +1,45 @@
+<view class="page-route">
+  <!-- 顶部标题栏 -->
+  <view class="page-header">
+    <view class="header-bar bar-orange"></view>
+    <text class="header-title">路线管理</text>
+    <view class="header-action" bindtap="onAdd">
+      <text class="add-btn">+ 新增</text>
+    </view>
+  </view>
+
+  <!-- 路线列表 -->
+  <view class="route-list">
+    <view class="route-card glass" wx:for="{{list}}" wx:key="title">
+      <!-- 渐变头部 -->
+      <view class="route-banner" style="background:{{item.grad}}">
+        <view class="route-banner-overlay"></view>
+        <view class="route-banner-content">
+          <text class="route-title">{{item.title}}</text>
+          <text class="route-sub">{{item.sub}}</text>
+        </view>
+      </view>
+      <!-- 内容区 -->
+      <view class="route-body">
+        <view class="route-tags">
+          <text class="route-tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</text>
+        </view>
+        <view class="route-meta">
+          <text class="route-meta-text">全程 {{item.dist}} · 约{{item.dur}}</text>
+          <text class="route-meta-count">今日 {{item.count}} 人选择</text>
+        </view>
+        <view class="route-actions">
+          <view class="route-btn-primary" data-title="{{item.title}}" bindtap="onEditRoute">
+            <text>编辑路线</text>
+          </view>
+          <view class="route-btn-ghost glass" data-title="{{item.title}}" bindtap="onViewDetail">
+            <text>查看详情</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-space"></view>
+  <nav-bar current="scenic"></nav-bar>
+</view>

@@ -1,0 +1,46 @@
+<view class="page-product">
+  <!-- 顶部标题栏 -->
+  <view class="page-header">
+    <view class="header-bar bar-amber"></view>
+    <text class="header-title">文创商品</text>
+    <view class="header-action" bindtap="onAdd">
+      <text class="add-btn">+ 新增</text>
+    </view>
+  </view>
+
+  <!-- 筛选标签 -->
+  <scroll-view class="filter-scroll" scroll-x enable-flex>
+    <view
+      wx:for="{{filters}}"
+      wx:key="*this"
+      class="filter-btn {{activeFilter === index ? 'filter-active' : 'filter-inactive'}}"
+      data-index="{{index}}"
+      bindtap="onFilterTap"
+    >
+      <text>{{item}}</text>
+    </view>
+  </scroll-view>
+
+  <!-- 商品列表 -->
+  <view class="product-list">
+    <view class="list-card glass product-item" wx:for="{{filteredList}}" wx:key="name">
+      <view class="product-emoji-wrap" style="background:{{item.grad}}">
+        <text class="product-emoji">{{item.emoji}}</text>
+      </view>
+      <view class="product-info">
+        <view class="product-name-row">
+          <text class="product-name">{{item.name}}</text>
+          <text wx:if="{{item.tag}}" class="tag {{item.tag === '缺货' ? 'tag-red' : item.tag === '限定' ? 'tag-purple' : item.tag === '新品' ? 'tag-blue' : 'tag-amber'}}">{{item.tag}}</text>
+        </view>
+        <text class="product-desc">{{item.cat}} · 库存 <text class="{{item.stock === 0 ? 'stock-zero' : ''}}">{{item.stock}}</text> · 已售 {{item.sales}}</text>
+        <text class="product-price">¥{{item.price}}</text>
+      </view>
+      <view class="edit-btn {{item.status === 'off' ? 'edit-btn-off' : ''}}" data-name="{{item.name}}" bindtap="onEdit">
+        <text class="edit-text {{item.status === 'off' ? 'edit-text-off' : ''}}">{{item.status === 'on' ? '编辑' : '下架'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-space"></view>
+  <nav-bar current="product"></nav-bar>
+</view>

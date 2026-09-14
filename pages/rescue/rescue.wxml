@@ -1,0 +1,77 @@
+<view class="page-rescue">
+  <!-- 顶部标题栏 -->
+  <view class="page-header header-red">
+    <view class="header-bar bar-red"></view>
+    <text class="header-title">救援管理</text>
+  </view>
+
+  <!-- 统计卡片 -->
+  <view class="stats-grid">
+    <view class="stats-item stats-red">
+      <text class="stats-value">{{stats[0].value}}</text>
+      <text class="stats-label">{{stats[0].label}}</text>
+    </view>
+    <view class="stats-item stats-emerald">
+      <text class="stats-value">{{stats[1].value}}</text>
+      <text class="stats-label">{{stats[1].label}}</text>
+    </view>
+    <view class="stats-item stats-amber">
+      <text class="stats-value">{{stats[2].value}}</text>
+      <text class="stats-label">{{stats[2].label}}</text>
+    </view>
+  </view>
+
+  <!-- 待处理求救 -->
+  <view class="section">
+    <view class="section-head">
+      <view class="section-bar bar-red"></view>
+      <text class="section-title">待处理求救</text>
+    </view>
+    <view class="sos-card glass">
+      <view class="sos-deco"></view>
+      <view class="sos-head">
+        <view class="sos-dot animate-pulse-soft"></view>
+        <text class="sos-id">{{pending.id}}</text>
+        <text class="sos-status">处理中</text>
+      </view>
+      <view class="sos-info">
+        <text>👤 {{pending.user}}</text>
+        <text class="sos-sep">·</text>
+        <text>📍 {{pending.loc}}</text>
+        <text class="sos-sep">·</text>
+        <text>🕐 {{pending.time}}</text>
+      </view>
+      <view class="sos-actions">
+        <view class="sos-btn-primary" bindtap="onHandleSOS">
+          <text>立即处理</text>
+        </view>
+        <view class="sos-btn-ghost glass" bindtap="onViewLocation">
+          <text>查看位置</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 历史记录 -->
+  <view class="section">
+    <view class="section-head">
+      <view class="section-bar bar-emerald"></view>
+      <text class="section-title">历史记录</text>
+    </view>
+    <view class="history-list">
+      <view class="list-card glass history-item" wx:for="{{history}}" wx:key="id">
+        <view class="history-icon-wrap">
+          <text class="history-icon">✅</text>
+        </view>
+        <view class="history-info">
+          <text class="history-id">{{item.id}}</text>
+          <text class="history-desc">👤 {{item.user}} · 📍 {{item.loc}} · {{item.time}}</text>
+        </view>
+        <text class="history-status">已完成</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-space"></view>
+  <nav-bar current="scenic"></nav-bar>
+</view>

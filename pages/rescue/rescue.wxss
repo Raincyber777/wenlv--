@@ -1,0 +1,272 @@
+.page-rescue {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #fef2f2 0%, #f8fafc 25%);
+}
+
+/* 标题栏 */
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 20rpx 40rpx 16rpx;
+  padding-top: calc(16px + env(safe-area-inset-top));
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(239, 68, 68, 0.1);
+}
+
+.header-bar {
+  width: 8rpx;
+  height: 40rpx;
+  border-radius: 9999rpx;
+}
+
+.bar-red {
+  background: linear-gradient(to bottom, #f87171, #dc2626);
+}
+
+.bar-emerald {
+  background: linear-gradient(to bottom, #34d399, #14b8a6);
+}
+
+.header-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* 统计卡片 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12rpx;
+  padding: 12rpx 32rpx;
+}
+
+.stats-item {
+  border-radius: 16rpx;
+  padding: 20rpx;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.stats-red {
+  background: linear-gradient(to bottom right, #fef2f2, rgba(254, 202, 202, 0.5));
+  border: 1px solid #fee2e2;
+}
+
+.stats-emerald {
+  background: linear-gradient(to bottom right, #ecfdf5, rgba(209, 250, 229, 0.5));
+  border: 1px solid #d1fae5;
+}
+
+.stats-amber {
+  background: linear-gradient(to bottom right, #fffbeb, rgba(254, 240, 138, 0.5));
+  border: 1px solid #fef3c7;
+}
+
+.stats-value {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.stats-red .stats-value { color: #b91c1c; }
+.stats-emerald .stats-value { color: #047857; }
+.stats-amber .stats-value { color: #b45309; }
+
+.stats-label {
+  display: block;
+  font-size: 20rpx;
+  margin-top: 4rpx;
+}
+
+.stats-red .stats-label { color: #ef4444; }
+.stats-emerald .stats-label { color: #10b981; }
+.stats-amber .stats-label { color: #f59e0b; }
+
+/* 区块 */
+.section {
+  padding: 16rpx 32rpx;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  margin-bottom: 12rpx;
+}
+
+.section-bar {
+  width: 8rpx;
+  height: 32rpx;
+  border-radius: 9999rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* SOS卡片 */
+.sos-card {
+  border-radius: 24rpx;
+  border: 2px solid rgba(254, 202, 202, 0.7);
+  padding: 24rpx;
+  box-shadow: 0 10px 30px -12px rgba(239, 68, 68, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.sos-deco {
+  position: absolute;
+  top: -24rpx;
+  right: -24rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.sos-head {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  margin-bottom: 16rpx;
+}
+
+.sos-dot {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  background: #ef4444;
+}
+
+.sos-id {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #dc2626;
+}
+
+.sos-status {
+  margin-left: auto;
+  padding: 6rpx 20rpx;
+  border-radius: 9999rpx;
+  background: #fef2f2;
+  color: #dc2626;
+  font-size: 20rpx;
+  font-weight: 600;
+  border: 1px solid #fee2e2;
+}
+
+.sos-info {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  font-size: 24rpx;
+  color: #6b7280;
+  margin-bottom: 16rpx;
+}
+
+.sos-sep {
+  color: #d1d5db;
+}
+
+.sos-actions {
+  display: flex;
+  gap: 12rpx;
+}
+
+.sos-btn-primary {
+  flex: 1;
+  height: 80rpx;
+  border-radius: 24rpx;
+  background: linear-gradient(to right, #ef4444, #dc2626);
+  color: #fff;
+  font-size: 24rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
+}
+
+.sos-btn-ghost {
+  flex: 1;
+  height: 80rpx;
+  border-radius: 24rpx;
+  color: #4b5563;
+  font-size: 24rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 历史记录 */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  border-radius: 24rpx;
+  padding: 16rpx 24rpx;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.history-icon-wrap {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 16rpx;
+  background: linear-gradient(to bottom right, #ecfdf5, #f0fdfa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.history-icon {
+  font-size: 40rpx;
+  color: #10b981;
+}
+
+.history-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.history-id {
+  display: block;
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.history-desc {
+  display: block;
+  font-size: 22rpx;
+  color: #9ca3af;
+  margin-top: 4rpx;
+}
+
+.history-status {
+  padding: 6rpx 16rpx;
+  border-radius: 12rpx;
+  font-size: 20rpx;
+  font-weight: 500;
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #d1fae5;
+  flex-shrink: 0;
+}
+
+.bottom-space {
+  height: 160rpx;
+}

@@ -1,0 +1,35 @@
+<view class="nav-wrap">
+  <view class="nav-inner">
+    <view
+      wx:for="{{tabs}}"
+      wx:key="key"
+      class="nav-item {{current === item.key ? 'active' : ''}}"
+      data-path="{{item.path}}"
+      bindtap="goPage"
+    >
+      <view wx:if="{{current === item.key}}" class="nav-top-bar"></view>
+      <!-- 概览 -->
+      <view class="nav-icon" wx:if="{{item.key === 'home'}}">
+        <view class="ico ico-home {{current === item.key ? 'ico-on' : ''}}"></view>
+      </view>
+      <!-- 景点 -->
+      <view class="nav-icon" wx:elif="{{item.key === 'scenic'}}">
+        <view class="ico ico-scenic {{current === item.key ? 'ico-on' : ''}}"></view>
+      </view>
+      <!-- 商品 -->
+      <view class="nav-icon" wx:elif="{{item.key === 'product'}}">
+        <view class="ico ico-product {{current === item.key ? 'ico-on' : ''}}"></view>
+      </view>
+      <!-- 消息 -->
+      <view class="nav-icon" wx:elif="{{item.key === 'notice'}}">
+        <view class="ico ico-notice {{current === item.key ? 'ico-on' : ''}}"></view>
+        <view wx:if="{{item.badge}}" class="nav-badge">{{item.badge}}</view>
+      </view>
+      <!-- 我的 -->
+      <view class="nav-icon" wx:elif="{{item.key === 'mine'}}">
+        <view class="ico ico-mine {{current === item.key ? 'ico-on' : ''}}"></view>
+      </view>
+      <text class="nav-label {{current === item.key ? 'nav-label-on' : ''}}">{{item.label}}</text>
+    </view>
+  </view>
+</view>

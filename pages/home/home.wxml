@@ -1,0 +1,89 @@
+<view class="page-home">
+  <!-- 顶部渐变区 -->
+  <view class="hero">
+    <view class="deco-circle dc1"></view>
+    <view class="deco-circle dc2"></view>
+    <view class="deco-circle dc3"></view>
+
+    <view class="hero-inner">
+      <view class="hero-top">
+        <view class="hero-title-wrap">
+          <text class="hero-sub">QINGCHENG · ADMIN</text>
+          <text class="hero-title">青城山管理端</text>
+        </view>
+        <view class="status-badge">
+          <view class="status-dot animate-pulse-soft"></view>
+          <text>运行中</text>
+        </view>
+      </view>
+
+      <!-- 核心数据卡片 -->
+      <view class="stat-grid">
+        <view class="stat-card glass-dark" wx:for="{{stats}}" wx:key="label">
+          <view class="stat-head">
+            <view class="stat-icon" style="background:{{item.iconBg}}">
+              <text class="stat-emoji" wx:if="{{item.icon === 'user'}}">👤</text>
+              <text class="stat-emoji" wx:elif="{{item.icon === 'money'}}">💰</text>
+              <text class="stat-emoji" wx:elif="{{item.icon === 'bag'}}">🛍️</text>
+              <text class="stat-emoji" wx:elif="{{item.icon === 'sos'}}">🆘</text>
+            </view>
+            <text class="stat-label">{{item.label}}</text>
+          </view>
+          <text class="stat-value">{{item.value}}</text>
+          <view class="stat-trend" wx:if="{{item.trend}}">
+            <text class="trend-arrow {{item.trendUp ? 'up' : 'down'}}">{{item.trendUp ? '▲' : '▼'}}</text>
+            <text class="trend-text" style="color:{{item.trendColor}}">{{item.trend}}</text>
+          </view>
+          <view class="stat-sub" wx:if="{{item.sub}}">
+            <text class="stat-sub-value">{{item.value}}</text>
+            <text class="stat-sub-text {{item.subPulse ? 'animate-pulse-soft' : ''}}" style="color:#fca5a5">{{item.sub}}</text>
+          </view>
+          <text class="stat-note" wx:if="{{item.note}}" style="color:{{item.noteColor}}">{{item.note}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 内容区 -->
+  <view class="content-bg">
+    <!-- 入园趋势 -->
+    <view class="trend-card glass">
+      <view class="card-head">
+        <view class="card-bar bar-emerald"></view>
+        <text class="card-title">近7日入园趋势</text>
+        <text class="card-link">详情 ›</text>
+      </view>
+      <view class="trend-chart">
+        <view class="trend-bar-wrap" wx:for="{{trendBars}}" wx:key="day">
+          <view
+            class="trend-bar bar-anim {{item.isToday ? 'today' : ''}}"
+            style="height:{{item.height}}%;animation-delay:{{index * 0.05}}s"
+          ></view>
+          <text class="trend-day {{item.isToday ? 'today' : ''}}">{{item.day}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 实时动态 -->
+    <view class="feed-card glass">
+      <view class="card-head">
+        <view class="card-bar bar-blue"></view>
+        <text class="card-title">实时动态</text>
+        <view class="feed-dot animate-pulse-soft"></view>
+      </view>
+      <view class="feed-list">
+        <view class="feed-item" wx:for="{{feed}}" wx:key="time">
+          <view class="feed-icon" style="background:linear-gradient(135deg, {{item.color === 'from-emerald-400 to-emerald-500' ? '#34d399, #10b981' : item.color === 'from-amber-400 to-amber-500' ? '#fbbf24, #f59e0b' : item.color === 'from-red-400 to-red-500' ? '#f87171, #ef4444' : item.color === 'from-blue-400 to-blue-500' ? '#60a5fa, #3b82f6' : item.color === 'from-emerald-400 to-teal-500' ? '#34d399, #14b8a6' : '#a78bfa, #8b5cf6'}})">
+            <text>{{item.icon}}</text>
+          </view>
+          <text class="feed-text">{{item.text}}</text>
+          <text class="feed-time">{{item.time}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="bottom-space"></view>
+  </view>
+
+  <nav-bar current="home"></nav-bar>
+</view>

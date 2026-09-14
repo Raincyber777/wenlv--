@@ -1,0 +1,168 @@
+.page-route {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ecfdf5 0%, #f8fafc 15%);
+}
+
+/* 标题栏 */
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 20rpx 40rpx 16rpx;
+  padding-top: calc(16px + env(safe-area-inset-top));
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+}
+
+.header-bar {
+  width: 8rpx;
+  height: 40rpx;
+  border-radius: 9999rpx;
+}
+
+.bar-orange {
+  background: linear-gradient(to bottom, #fb923c, #ef4444);
+}
+
+.header-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.header-action {
+  margin-left: auto;
+}
+
+.add-btn {
+  padding: 12rpx 28rpx;
+  border-radius: 24rpx;
+  background: linear-gradient(to right, #10b981, #14b8a6);
+  color: #fff;
+  font-size: 24rpx;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
+}
+
+/* 路线列表 */
+.route-list {
+  padding: 16rpx 32rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.route-card {
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.route-banner {
+  position: relative;
+  height: 192rpx;
+  display: flex;
+  align-items: flex-end;
+  padding: 24rpx;
+  overflow: hidden;
+}
+
+.route-banner-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.route-banner-content {
+  position: relative;
+}
+
+.route-title {
+  display: block;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.route-sub {
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24rpx;
+  margin-top: 4rpx;
+}
+
+.route-body {
+  padding: 24rpx;
+}
+
+.route-tags {
+  display: flex;
+  gap: 8rpx;
+  margin-bottom: 12rpx;
+}
+
+.route-tag {
+  padding: 6rpx 20rpx;
+  border-radius: 12rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.route-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+
+.route-meta-text {
+  font-size: 24rpx;
+  color: #9ca3af;
+}
+
+.route-meta-count {
+  font-size: 24rpx;
+  color: #059669;
+  font-weight: 600;
+}
+
+.route-actions {
+  display: flex;
+  gap: 12rpx;
+}
+
+.route-btn-primary {
+  flex: 1;
+  height: 72rpx;
+  border-radius: 24rpx;
+  background: linear-gradient(to right, #10b981, #14b8a6);
+  color: #fff;
+  font-size: 24rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
+}
+
+.route-btn-ghost {
+  flex: 1;
+  height: 72rpx;
+  border-radius: 24rpx;
+  color: #4b5563;
+  font-size: 24rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-space {
+  height: 160rpx;
+}

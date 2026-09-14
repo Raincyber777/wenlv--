@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/scenic/scenic",
+    "pages/route/route",
+    "pages/product/product",
+    "pages/rescue/rescue",
+    "pages/notice/notice",
+    "pages/mine/mine"
+  ],
+  "window": {
+    "navigationBarTitleText": "青城山管理端",
+    "navigationBarBackgroundColor": "#064e3b",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f8fafc",
+    "enablePullDownRefresh": false
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
