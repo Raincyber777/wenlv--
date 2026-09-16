@@ -1,2 +1,36 @@
-<!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<view class="page-mine">
+  <!-- 个人信息 -->
+  <view class="profile-hero">
+    <view class="deco-circle p-dc1"></view>
+    <view class="deco-circle p-dc2"></view>
+    <view class="avatar">
+      <text class="avatar-emoji">👤</text>
+    </view>
+    <text class="profile-name">管理员</text>
+    <view class="role-badge">
+      <text>景区运营</text>
+    </view>
+  </view>
+
+  <!-- 数据统计 -->
+  <view class="mine-stats">
+    <view class="mine-stat glass" wx:for="{{stats}}" wx:key="label">
+      <text class="mine-stat-value">{{item.value}}</text>
+      <text class="mine-stat-label">{{item.label}}</text>
+    </view>
+  </view>
+
+  <!-- 操作列表 -->
+  <view class="menu-card glass">
+    <view class="menu-item" wx:for="{{menus}}" wx:key="label" data-label="{{item.label}}" bindtap="onMenuTap">
+      <view class="menu-icon" style="background:{{item.grad}}">
+        <text>{{item.icon}}</text>
+      </view>
+      <text class="menu-label">{{item.label}}</text>
+      <text class="menu-arrow">›</text>
+    </view>
+  </view>
+
+  <view class="bottom-space"></view>
+  <nav-bar current="mine"></nav-bar>
+</view>

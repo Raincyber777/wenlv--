@@ -6,14 +6,8 @@
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(160deg, #064e3b 0%, #047857 40%, #059669 70%, #10b981 100%);
+  background: linear-gradient(160deg, var(--brand-900) 0%, var(--brand-700) 40%, var(--brand-600) 70%, var(--brand-500) 100%);
   padding-top: calc(16px + env(safe-area-inset-top));
-}
-
-.deco-circle {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
 }
 
 .dc1 {
@@ -84,7 +78,7 @@
   width: 16rpx;
   height: 16rpx;
   border-radius: 50%;
-  background: #34d399;
+  background: var(--brand-400);
 }
 
 /* 核心数据卡片 */
@@ -144,7 +138,7 @@
   font-size: 20rpx;
 }
 
-.trend-arrow.up { color: #6ee7b7; }
+.trend-arrow.up { color: var(--brand-300); }
 .trend-arrow.down { color: #fca5a5; }
 
 .trend-text {
@@ -177,7 +171,7 @@
 
 /* 内容区背景 */
 .content-bg {
-  background: linear-gradient(180deg, #ecfdf5 0%, #f8fafc 20%);
+  background: linear-gradient(180deg, var(--bg-tint) 0%, var(--bg) 20%);
 }
 
 /* 趋势卡片 */
@@ -202,19 +196,16 @@
   border-radius: 9999rpx;
 }
 
-.bar-emerald { background: linear-gradient(to bottom, #34d399, #14b8a6); }
-.bar-blue { background: linear-gradient(to bottom, #60a5fa, #6366f1); }
-
 .card-title {
   font-size: 28rpx;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--text-900);
 }
 
 .card-link {
   margin-left: auto;
   font-size: 24rpx;
-  color: #059669;
+  color: var(--brand-600);
   font-weight: 500;
 }
 
@@ -243,17 +234,17 @@
 }
 
 .trend-bar.today {
-  background: linear-gradient(to top, #10b981, #34d399);
+  background: linear-gradient(to top, var(--brand-500), var(--brand-400));
   box-shadow: 0 2px 8px rgba(16,185,129,0.3);
 }
 
 .trend-day {
   font-size: 18rpx;
-  color: #9ca3af;
+  color: var(--text-400);
 }
 
 .trend-day.today {
-  color: #059669;
+  color: var(--brand-600);
   font-weight: 600;
 }
 
@@ -270,7 +261,7 @@
   width: 16rpx;
   height: 16rpx;
   border-radius: 50%;
-  background: #34d399;
+  background: var(--brand-400);
 }
 
 .feed-list {
@@ -294,13 +285,13 @@
   justify-content: center;
   font-size: 24rpx;
   flex-shrink: 0;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  box-shadow: var(--shadow-sm);
 }
 
 .feed-text {
   flex: 1;
   font-size: 24rpx;
-  color: #4b5563;
+  color: var(--text-600);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -308,10 +299,6 @@
 
 .feed-time {
   font-size: 20rpx;
-  color: #d1d5db;
+  color: var(--text-300);
   flex-shrink: 0;
-}
-
-.bottom-space {
-  height: 160rpx;
 }

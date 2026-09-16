@@ -1,48 +1,6 @@
 .page-route {
   min-height: 100vh;
-  background: linear-gradient(180deg, #ecfdf5 0%, #f8fafc 15%);
-}
-
-/* 标题栏 */
-.page-header {
-  display: flex;
-  align-items: center;
-  gap: 12rpx;
-  padding: 20rpx 40rpx 16rpx;
-  padding-top: calc(16px + env(safe-area-inset-top));
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(16, 185, 129, 0.1);
-}
-
-.header-bar {
-  width: 8rpx;
-  height: 40rpx;
-  border-radius: 9999rpx;
-}
-
-.bar-orange {
-  background: linear-gradient(to bottom, #fb923c, #ef4444);
-}
-
-.header-title {
-  font-size: 32rpx;
-  font-weight: 700;
-  color: #1f2937;
-}
-
-.header-action {
-  margin-left: auto;
-}
-
-.add-btn {
-  padding: 12rpx 28rpx;
-  border-radius: 24rpx;
-  background: linear-gradient(to right, #10b981, #14b8a6);
-  color: #fff;
-  font-size: 24rpx;
-  font-weight: 600;
-  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
+  background: linear-gradient(180deg, var(--bg-tint) 0%, var(--bg) 15%);
 }
 
 /* 路线列表 */
@@ -56,7 +14,7 @@
 .route-card {
   border-radius: 24rpx;
   overflow: hidden;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-sm);
 }
 
 .route-banner {
@@ -111,7 +69,7 @@
   font-size: 22rpx;
   font-weight: 500;
   background: #f3f4f6;
-  color: #4b5563;
+  color: var(--text-600);
 }
 
 .route-meta {
@@ -123,12 +81,12 @@
 
 .route-meta-text {
   font-size: 24rpx;
-  color: #9ca3af;
+  color: var(--text-400);
 }
 
 .route-meta-count {
   font-size: 24rpx;
-  color: #059669;
+  color: var(--brand-600);
   font-weight: 600;
 }
 
@@ -141,7 +99,7 @@
   flex: 1;
   height: 72rpx;
   border-radius: 24rpx;
-  background: linear-gradient(to right, #10b981, #14b8a6);
+  background: linear-gradient(to right, var(--brand-500), var(--teal));
   color: #fff;
   font-size: 24rpx;
   font-weight: 600;
@@ -155,14 +113,10 @@
   flex: 1;
   height: 72rpx;
   border-radius: 24rpx;
-  color: #4b5563;
+  color: var(--text-600);
   font-size: 24rpx;
   font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.bottom-space {
-  height: 160rpx;
 }

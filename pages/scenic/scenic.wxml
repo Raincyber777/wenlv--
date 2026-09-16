@@ -35,7 +35,7 @@
         </view>
         <text class="scenic-desc">📍 {{item.dist}} · 🎙 语音 {{item.audio}}</text>
       </view>
-      <view class="edit-btn" data-name="{{item.name}}" bindtap="onEdit">
+      <view class="edit-btn" data-id="{{item.id || item.name}}" bindtap="onEdit">
         <text class="edit-text">编辑</text>
       </view>
     </view>

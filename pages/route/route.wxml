@@ -41,5 +41,5 @@
   </view>
 
   <view class="bottom-space"></view>
-  <nav-bar current="scenic"></nav-bar>
+  <nav-bar current=""></nav-bar>
 </view>

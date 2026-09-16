@@ -1,6 +1,6 @@
 <view class="page-rescue">
   <!-- 顶部标题栏 -->
-  <view class="page-header header-red">
+  <view class="page-header page-header--red">
     <view class="header-bar bar-red"></view>
     <text class="header-title">救援管理</text>
   </view>
@@ -73,5 +73,5 @@
   </view>
 
   <view class="bottom-space"></view>
-  <nav-bar current="scenic"></nav-bar>
+  <nav-bar current=""></nav-bar>
 </view>

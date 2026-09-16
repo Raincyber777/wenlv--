@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/home",
     "pages/scenic/scenic",
+    "pages/scenic-edit/scenic-edit",
     "pages/route/route",
     "pages/product/product",
     "pages/rescue/rescue",

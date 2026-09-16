@@ -1,66 +1,35 @@
-// pages/mine/mine.js
 Page({
+  data: {
+    stats: [
+      { value: '8,432', label: '本月入园' },
+      { value: '¥12.6w', label: '本月营收' },
+      { value: '36', label: '已发公告' }
+    ],
+    menus: [
+      { icon: '👤', label: '账号信息', grad: 'linear-gradient(135deg,#34d399,#14b8a6)' },
+      { icon: '⚙️', label: '景区设置', grad: 'linear-gradient(135deg,#60a5fa,#4f46e5)' },
+      { icon: '📊', label: '数据统计', grad: 'linear-gradient(135deg,#818cf8,#2563eb)' },
+      { icon: '💬', label: '帮助与反馈', grad: 'linear-gradient(135deg,#fbbf24,#f97316)' },
+      { icon: '🏔️', label: '关于青城山管理端', grad: 'linear-gradient(135deg,#34d399,#0d9488)' },
+      { icon: '🚪', label: '退出登录', grad: 'linear-gradient(135deg,#f87171,#dc2626)' }
+    ]
+  },
 
-    /**
-     * 页面的初始数据
-     */
-    data: {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad(options) {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
+  onMenuTap(e) {
+    const label = e.currentTarget.dataset.label
+    if (label === '退出登录') {
+      wx.showModal({
+        title: '退出登录',
+        content: '确定要退出当前账号吗？',
+        confirmColor: '#ef4444',
+        success(res) {
+          if (res.confirm) {
+            wx.showToast({ title: '已退出', icon: 'success' })
+          }
+        }
+      })
+      return
     }
+    wx.showToast({ title: label, icon: 'none' })
+  }
 })

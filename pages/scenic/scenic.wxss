@@ -1,77 +1,6 @@
 .page-scenic {
   min-height: 100vh;
-  background: linear-gradient(180deg, #ecfdf5 0%, #f8fafc 15%);
-}
-
-/* 标题栏 */
-.page-header {
-  display: flex;
-  align-items: center;
-  gap: 12rpx;
-  padding: 20rpx 40rpx 16rpx;
-  padding-top: calc(16px + env(safe-area-inset-top));
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(16, 185, 129, 0.1);
-}
-
-.header-bar {
-  width: 8rpx;
-  height: 40rpx;
-  border-radius: 9999rpx;
-}
-
-.bar-emerald {
-  background: linear-gradient(to bottom, #34d399, #14b8a6);
-}
-
-.header-title {
-  font-size: 32rpx;
-  font-weight: 700;
-  color: #1f2937;
-}
-
-.header-action {
-  margin-left: auto;
-}
-
-.add-btn {
-  padding: 12rpx 28rpx;
-  border-radius: 24rpx;
-  background: linear-gradient(to right, #10b981, #14b8a6);
-  color: #fff;
-  font-size: 24rpx;
-  font-weight: 600;
-  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
-}
-
-/* 筛选 */
-.filter-scroll {
-  white-space: nowrap;
-  padding: 12rpx 32rpx;
-}
-
-.filter-btn {
-  display: inline-flex;
-  padding: 12rpx 32rpx;
-  border-radius: 24rpx;
-  font-size: 24rpx;
-  font-weight: 500;
-  margin-right: 12rpx;
-}
-
-.filter-active {
-  background: #10b981;
-  color: #fff;
-  font-weight: 600;
-  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
-}
-
-.filter-inactive {
-  background: #fff;
-  color: #4b5563;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  background: linear-gradient(180deg, var(--bg-tint) 0%, var(--bg) 15%);
 }
 
 /* 景点列表 */
@@ -88,7 +17,7 @@
   gap: 12rpx;
   border-radius: 24rpx;
   padding: 20rpx 24rpx;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-sm);
 }
 
 .scenic-emoji-wrap {
@@ -99,7 +28,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-sm);
 }
 
 .scenic-emoji {
@@ -120,54 +49,12 @@
 .scenic-name {
   font-size: 28rpx;
   font-weight: 600;
-  color: #1f2937;
-}
-
-.tag {
-  padding: 2rpx 10rpx;
-  border-radius: 8rpx;
-  font-size: 20rpx;
-  font-weight: 500;
-}
-
-.tag-emerald {
-  background: #ecfdf5;
-  color: #059669;
-  border: 1px solid #d1fae5;
-}
-
-.tag-blue {
-  background: #eff6ff;
-  color: #2563eb;
-  border: 1px solid #dbeafe;
-}
-
-.tag-amber {
-  background: #fffbeb;
-  color: #d97706;
-  border: 1px solid #fef3c7;
+  color: var(--text-900);
 }
 
 .scenic-desc {
   display: block;
   font-size: 24rpx;
-  color: #9ca3af;
+  color: var(--text-400);
   margin-top: 6rpx;
-}
-
-.edit-btn {
-  padding: 12rpx 28rpx;
-  border-radius: 24rpx;
-  background: linear-gradient(to right, #ecfdf5, #f0fdfa);
-  border: 1px solid #d1fae5;
-}
-
-.edit-text {
-  font-size: 24rpx;
-  font-weight: 600;
-  color: #059669;
-}
-
-.bottom-space {
-  height: 160rpx;
 }

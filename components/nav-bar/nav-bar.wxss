@@ -30,7 +30,7 @@
 }
 
 .nav-item.active {
-  color: #059669;
+  color: var(--brand-600);
 }
 
 .nav-top-bar {
@@ -39,7 +39,7 @@
   width: 64rpx;
   height: 8rpx;
   border-radius: 9999rpx;
-  background: linear-gradient(to right, #34d399, #14b8a6);
+  background: linear-gradient(to right, var(--brand-400), var(--teal));
 }
 
 .nav-icon {
@@ -70,7 +70,7 @@
 }
 
 .nav-item.active .ico-home {
-  color: #059669;
+  color: var(--brand-600);
 }
 
 /* 景点 - 山图标 */
@@ -81,7 +81,7 @@
 }
 
 .nav-item.active .ico-scenic {
-  color: #059669;
+  color: var(--brand-600);
 }
 
 /* 商品 - 购物袋 */
@@ -92,7 +92,7 @@
 }
 
 .nav-item.active .ico-product {
-  color: #059669;
+  color: var(--brand-600);
 }
 
 /* 消息 - 铃铛 */
@@ -103,7 +103,7 @@
 }
 
 .nav-item.active .ico-notice {
-  color: #059669;
+  color: var(--brand-600);
 }
 
 /* 我的 - 人 */
@@ -114,7 +114,7 @@
 }
 
 .nav-item.active .ico-mine {
-  color: #059669;
+  color: var(--brand-600);
 }
 
 .nav-badge {
@@ -142,6 +142,6 @@
 }
 
 .nav-label-on {
-  color: #059669;
+  color: var(--brand-600);
   font-weight: 600;
 }
