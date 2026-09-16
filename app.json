@@ -5,8 +5,10 @@
     "pages/scenic-edit/scenic-edit",
     "pages/route/route",
     "pages/product/product",
+    "pages/product-edit/product-edit",
     "pages/rescue/rescue",
     "pages/notice/notice",
+    "pages/notice-edit/notice-edit",
     "pages/mine/mine"
   ],
   "window": {

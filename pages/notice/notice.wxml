@@ -37,7 +37,7 @@
           <text class="notice-time">{{item.time}}</text>
         </view>
       </view>
-      <view class="edit-btn" data-title="{{item.title}}" bindtap="onEdit">
+      <view class="edit-btn" data-id="{{item.id || item.title}}" bindtap="onEdit">
         <text class="edit-text">编辑</text>
       </view>
     </view>

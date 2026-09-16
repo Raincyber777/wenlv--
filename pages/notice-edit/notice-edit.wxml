@@ -1,0 +1,164 @@
+<view class="page-edit">
+  <!-- 顶部导航 -->
+  <view class="edit-header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-arrow">‹</text>
+    </view>
+    <view class="header-bar bar-blue"></view>
+    <text class="header-title">{{isEdit ? '编辑消息' : '发布消息'}}</text>
+    <view class="header-status" wx:if="{{isEdit}}">
+      <text class="tag {{form.type === '公告' ? 'tag-emerald' : 'tag-blue'}}">{{form.type}}</text>
+    </view>
+  </view>
+
+  <scroll-view class="edit-body" scroll-y>
+    <!-- 消息预览 -->
+    <view class="card glass">
+      <view class="card-head">
+        <view class="card-bar bar-blue"></view>
+        <text class="card-title">消息预览</text>
+        <text class="card-tip">游客端消息列表展示效果</text>
+      </view>
+      <view class="preview-item">
+        <view class="preview-icon-wrap" style="background:{{form.grad}}">
+          <text class="preview-icon">{{form.icon}}</text>
+        </view>
+        <view class="preview-info">
+          <view class="preview-title-row">
+            <text class="preview-title">{{form.title || '消息标题预览'}}</text>
+            <view wx:if="{{form.unread}}" class="preview-dot"></view>
+          </view>
+          <view class="preview-meta">
+            <text class="preview-type {{form.type === '公告' ? 'type-emerald' : 'type-blue'}}">{{form.type}}</text>
+            <text class="preview-time">{{form.time}}</text>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{form.content}}" class="preview-content">
+        <text>{{form.content}}</text>
+      </view>
+    </view>
+
+    <!-- 基本信息 -->
+    <view class="card glass">
+      <view class="card-head">
+        <view class="card-bar bar-emerald"></view>
+        <text class="card-title">基本信息</text>
+      </view>
+
+      <view class="field">
+        <text class="field-label">消息标题 <text class="req">*</text></text>
+        <input class="text-input" placeholder="如：前山索道例行维护通知" value="{{form.title}}" data-field="title" bindinput="onFieldInput" maxlength="40" />
+      </view>
+
+      <view class="field-row">
+        <view class="field flex-1">
+          <text class="field-label">消息类型</text>
+          <picker mode="selector" range="{{types}}" value="{{form.typeIndex}}" bindchange="onTypeChange">
+            <view class="picker-box">
+              <text>{{form.type}}</text>
+              <text class="picker-arrow">›</text>
+            </view>
+          </picker>
+        </view>
+        <view class="field flex-1">
+          <text class="field-label">发布时间</text>
+          <input class="text-input" placeholder="如：09-13 18:00" value="{{form.time}}" data-field="time" bindinput="onFieldInput" />
+        </view>
+      </view>
+
+      <view class="field">
+        <text class="field-label">消息图标</text>
+        <view class="emoji-grid">
+          <view
+            wx:for="{{icons}}"
+            wx:key="*this"
+            class="emoji-item {{form.icon === item ? 'emoji-active' : ''}}"
+            data-icon="{{item}}"
+            bindtap="onIconTap"
+          >
+            <text>{{item}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="field">
+        <text class="field-label">图标底色</text>
+        <view class="grad-grid">
+          <view
+            wx:for="{{grads}}"
+            wx:key="label"
+            class="grad-item {{form.gradIndex === index ? 'grad-active' : ''}}"
+            style="background:{{item.value}}"
+            data-index="{{index}}"
+            bindtap="onGradTap"
+          >
+            <text wx:if="{{form.gradIndex === index}}" class="grad-check">✓</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 消息正文 -->
+    <view class="card glass">
+      <view class="card-head">
+        <view class="card-bar bar-blue"></view>
+        <text class="card-title">消息正文</text>
+      </view>
+      <textarea
+        class="textarea"
+        placeholder="填写正文内容，将同步推送到游客端消息详情…"
+        value="{{form.content}}"
+        data-field="content"
+        bindinput="onFieldInput"
+        maxlength="1000"
+        auto-height
+      />
+      <text class="field-hint">{{form.content.length || 0}} / 1000</text>
+    </view>
+
+    <!-- 推送与状态 -->
+    <view class="card glass">
+      <view class="card-head">
+        <view class="card-bar bar-amber"></view>
+        <text class="card-title">推送与状态</text>
+      </view>
+
+      <view class="facility-row">
+        <view class="facility-left">
+          <text class="facility-icon">📮</text>
+          <view class="facility-text">
+            <text class="facility-name">推送到游客端</text>
+            <text class="facility-sub">{{form.push ? '保存后将立即推送提醒全部游客' : '仅保存到消息列表，不弹提醒'}}</text>
+          </view>
+        </view>
+        <switch checked="{{form.push}}" color="#10b981" data-field="push" bindchange="onSwitch" />
+      </view>
+
+      <view class="divider"></view>
+
+      <view class="facility-row">
+        <view class="facility-left">
+          <text class="facility-icon">🔴</text>
+          <view class="facility-text">
+            <text class="facility-name">标记为未读</text>
+            <text class="facility-sub">{{form.unread ? '游客端显示红点提醒' : '静默显示，不打扰游客'}}</text>
+          </view>
+        </view>
+        <switch checked="{{form.unread}}" color="#10b981" data-field="unread" bindchange="onSwitch" />
+      </view>
+    </view>
+
+    <view class="bottom-pad"></view>
+  </scroll-view>
+
+  <!-- 底部操作 -->
+  <view class="edit-footer">
+    <view wx:if="{{isEdit}}" class="btn-danger" bindtap="onDelete">
+      <text>删除</text>
+    </view>
+    <view class="btn-save" bindtap="onSave">
+      <text>{{isEdit ? '💾 保存修改' : '📨 发布消息'}}</text>
+    </view>
+  </view>
+</view>

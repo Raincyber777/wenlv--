@@ -35,7 +35,7 @@
         <text class="product-desc">{{item.cat}} · 库存 <text class="{{item.stock === 0 ? 'stock-zero' : ''}}">{{item.stock}}</text> · 已售 {{item.sales}}</text>
         <text class="product-price">¥{{item.price}}</text>
       </view>
-      <view class="edit-btn {{item.status === 'off' ? 'edit-btn-off' : ''}}" data-name="{{item.name}}" bindtap="onEdit">
+      <view class="edit-btn {{item.status === 'off' ? 'edit-btn-off' : ''}}" data-id="{{item.id || item.name}}" bindtap="onEdit">
         <text class="edit-text {{item.status === 'off' ? 'edit-text-off' : ''}}">{{item.status === 'on' ? '编辑' : '下架'}}</text>
       </view>
     </view>

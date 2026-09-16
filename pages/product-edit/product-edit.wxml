@@ -1,0 +1,171 @@
+<view class="page-edit">
+  <!-- 顶部导航 -->
+  <view class="edit-header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-arrow">‹</text>
+    </view>
+    <view class="header-bar bar-amber"></view>
+    <text class="header-title">{{isEdit ? '编辑商品' : '新增商品'}}</text>
+    <view class="header-status" wx:if="{{isEdit}}">
+      <text class="tag {{form.on ? 'tag-emerald' : 'tag-red'}}">{{form.on ? '在售中' : '已下架'}}</text>
+    </view>
+  </view>
+
+  <scroll-view class="edit-body" scroll-y>
+    <!-- 商品预览 -->
+    <view class="card glass">
+      <view class="card-head">
+        <view class="card-bar bar-amber"></view>
+        <text class="card-title">商品预览</text>
+        <text class="card-tip">游客端实际展示效果</text>
+      </view>
+      <view class="preview-wrap" style="background:{{form.grad}}">
+        <text class="preview-emoji">{{form.emoji}}</text>
+        <view class="preview-info">
+          <view class="preview-name-row">
+            <text class="preview-name">{{form.name || '商品名称预览'}}</text>
+            <text wx:if="{{form.tag && form.tag !== '无'}}" class="preview-tag">{{form.tag}}</text>
+          </view>
+          <text class="preview-sub">{{form.cat}} · 库存 {{form.stock || 0}} · 已售 {{form.sales || 0}}</text>
+          <text class="preview-price">¥{{form.price || '0.00'}}</text>
+        </view>
+      </view>
+      <view class="stock-warn {{(form.stock || 0) == 0 ? 'warn-on' : ''}}">
+        <text>{{(form.stock || 0) == 0 ? '⚠️ 库存为 0，将自动标记为缺货状态' : '库存充足'}}</text>
+      </view>
+    </view>
+
+    <!-- 基本信息 -->
+    <view class="card glass">
+      <view class="card-head">
+        <view class="card-bar bar-blue"></view>
+        <text class="card-title">基本信息</text>
+      </view>
+
+      <view class="field">
+        <text class="field-label">商品名称 <text class="req">*</text></text>
+        <input class="text-input" placeholder="如：青城道茶礼盒" value="{{form.name}}" data-field="name" bindinput="onFieldInput" maxlength="30" />
+      </view>
+
+      <view class="field">
+        <text class="field-label">商品分类</text>
+        <picker mode="selector" range="{{cats}}" value="{{form.catIndex}}" bindchange="onCatChange">
+          <view class="picker-box">
+            <text>{{form.cat}}</text>
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="field-row">
+        <view class="field flex-1">
+          <text class="field-label">售价 ¥ <text class="req">*</text></text>
+          <input class="text-input" type="digit" placeholder="如：128" value="{{form.price}}" data-field="price" bindinput="onFieldInput" />
+        </view>
+        <view class="field flex-1">
+          <text class="field-label">库存 <text class="req">*</text></text>
+          <input class="text-input" type="number" placeholder="如：86" value="{{form.stock}}" data-field="stock" bindinput="onFieldInput" />
+        </view>
+        <view class="field flex-1">
+          <text class="field-label">累计销量</text>
+          <input class="text-input" type="number" placeholder="如：342" value="{{form.sales}}" data-field="sales" bindinput="onFieldInput" />
+        </view>
+      </view>
+
+      <view class="field">
+        <text class="field-label">营销标签</text>
+        <view class="tag-row">
+          <view
+            wx:for="{{tags}}"
+            wx:key="*this"
+            class="tag-pick {{form.tag === item ? 'tag-pick-on' : ''}}"
+            data-tag="{{item}}"
+            bindtap="onTagTap"
+          >
+            <text>{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 封面样式 -->
+    <view class="card glass">
+      <view class="card-head">
+        <view class="card-bar bar-emerald"></view>
+        <text class="card-title">封面样式</text>
+      </view>
+      <view class="field">
+        <text class="field-label">封面图标</text>
+        <view class="emoji-grid">
+          <view
+            wx:for="{{emojis}}"
+            wx:key="*this"
+            class="emoji-item {{form.emoji === item ? 'emoji-active' : ''}}"
+            data-emoji="{{item}}"
+            bindtap="onEmojiTap"
+          >
+            <text>{{item}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="field">
+        <text class="field-label">封面渐变</text>
+        <view class="grad-grid">
+          <view
+            wx:for="{{grads}}"
+            wx:key="label"
+            class="grad-item {{form.gradIndex === index ? 'grad-active' : ''}}"
+            style="background:{{item.value}}"
+            data-index="{{index}}"
+            bindtap="onGradTap"
+          >
+            <text wx:if="{{form.gradIndex === index}}" class="grad-check">✓</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 上架状态 -->
+    <view class="card glass shelf-card {{form.on ? '' : 'off'}}">
+      <view class="facility-row">
+        <view class="facility-left">
+          <text class="facility-icon">{{form.on ? '🟢' : '🚫'}}</text>
+          <view class="facility-text">
+            <text class="facility-name">{{form.on ? '在售中' : '已下架'}}</text>
+            <text class="facility-sub">{{form.on ? '游客端商城可见可购买' : '游客端隐藏该商品，可随时重新上架'}}</text>
+          </view>
+        </view>
+        <switch checked="{{form.on}}" color="#f59e0b" data-field="on" bindchange="onSwitch" />
+      </view>
+    </view>
+
+    <!-- 商品详情 -->
+    <view class="card glass">
+      <view class="card-head">
+        <view class="card-bar bar-blue"></view>
+        <text class="card-title">商品详情</text>
+      </view>
+      <textarea
+        class="textarea"
+        placeholder="介绍商品工艺、规格、寓意等，将同步展示到游客端商城…"
+        value="{{form.desc}}"
+        bindinput="onDescInput"
+        maxlength="500"
+        auto-height
+      />
+      <text class="field-hint">{{form.desc.length || 0}} / 500</text>
+    </view>
+
+    <view class="bottom-pad"></view>
+  </scroll-view>
+
+  <!-- 底部操作 -->
+  <view class="edit-footer">
+    <view wx:if="{{isEdit}}" class="btn-danger" bindtap="onDelete">
+      <text>删除</text>
+    </view>
+    <view class="btn-save" bindtap="onSave">
+      <text>{{isEdit ? '💾 保存修改' : '＋ 确认上架'}}</text>
+    </view>
+  </view>
+</view>
