@@ -32,7 +32,9 @@
       <view class="sos-head">
         <view class="sos-dot animate-pulse-soft"></view>
         <text class="sos-id">{{pending.id}}</text>
-        <text class="sos-status">处理中</text>
+        <view class="sos-status">
+          <t-tag theme="danger" variant="light" size="small">处理中</t-tag>
+        </view>
       </view>
       <view class="sos-info">
         <text>👤 {{pending.user}}</text>
@@ -67,7 +69,7 @@
           <text class="history-id">{{item.id}}</text>
           <text class="history-desc">👤 {{item.user}} · 📍 {{item.loc}} · {{item.time}}</text>
         </view>
-        <text class="history-status">已完成</text>
+        <t-tag theme="success" variant="light" size="small">已完成</t-tag>
       </view>
     </view>
   </view>
@@ -75,3 +77,15 @@
   <view class="bottom-space"></view>
   <nav-bar current=""></nav-bar>
 </view>
+
+<!-- 处理确认弹窗 -->
+<t-dialog
+  visible="{{showHandle}}"
+  title="立即处理"
+  content="确认开始处理此救援请求？"
+  confirm-btn="开始处理"
+  cancel-btn="取消"
+  bind:confirm="onConfirmHandle"
+  bind:cancel="onCancelDialog"
+  bind:close="onCancelDialog"
+/>

@@ -257,3 +257,66 @@ page {
 .bottom-space {
   height: 160rpx;
 }
+
+/* ============ TDesign 主题定制（青城山绿） ============ */
+page {
+  --td-brand-color: #059669;
+  --td-brand-color-1: #ecfdf5;
+  --td-brand-color-2: #d1fae5;
+  --td-brand-color-3: #a7f3d0;
+  --td-brand-color-4: #6ee7b7;
+  --td-brand-color-5: #34d399;
+  --td-brand-color-6: #10b981;
+  --td-brand-color-7: #059669;
+  --td-brand-color-8: #047857;
+  --td-brand-color-9: #065f46;
+  --td-brand-color-10: #064e3b;
+  --td-warning-color: #f59e0b;
+  --td-warning-color-2: #fef3c7;
+  --td-warning-color-7: #d97706;
+  --td-error-color: #ef4444;
+  --td-error-color-2: #fee2e2;
+  --td-error-color-7: #dc2626;
+  --td-cell-vertical-padding: 24rpx;
+  --td-cell-horizontal-padding: 28rpx;
+  --td-cell-border-color: rgba(0, 0, 0, 0.04);
+  --td-switch-checked-color: #10b981;
+  --td-radius-default: 16rpx;
+}
+
+/* 搜索容器(共享) */
+.search-wrap {
+  padding: 8rpx 32rpx 0;
+}
+
+/* 空状态(共享) */
+.empty-wrap {
+  display: block;
+  padding: 80rpx 0 40rpx;
+}
+
+/* 我的-菜单标题(TDesign外部样式类) */
+.menu-title {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: var(--text-900);
+}
+
+/* 编辑页底部按钮(TDesign外部样式类) */
+.footer-del-wrap {
+  width: 190rpx;
+  flex-shrink: 0;
+}
+
+.footer-save-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.footer-del {
+  border-radius: 20rpx !important;
+}
+
+.footer-save {
+  border-radius: 20rpx !important;
+}

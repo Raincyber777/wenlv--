@@ -1,10 +1,6 @@
 Page({
   data: {
-    stats: [
-      { value: '8,432', label: '本月入园' },
-      { value: '¥12.6w', label: '本月营收' },
-      { value: '36', label: '已发公告' }
-    ],
+    showLogout: false,
     menus: [
       { icon: '👤', label: '账号信息', grad: 'linear-gradient(135deg,#34d399,#14b8a6)' },
       { icon: '⚙️', label: '景区设置', grad: 'linear-gradient(135deg,#60a5fa,#4f46e5)' },
@@ -18,18 +14,22 @@ Page({
   onMenuTap(e) {
     const label = e.currentTarget.dataset.label
     if (label === '退出登录') {
-      wx.showModal({
-        title: '退出登录',
-        content: '确定要退出当前账号吗？',
-        confirmColor: '#ef4444',
-        success(res) {
-          if (res.confirm) {
-            wx.showToast({ title: '已退出', icon: 'success' })
-          }
-        }
-      })
+      this.setData({ showLogout: true })
+      return
+    }
+    if (label === '数据统计') {
+      wx.navigateTo({ url: '/pages/stats/stats' })
       return
     }
     wx.showToast({ title: label, icon: 'none' })
+  },
+
+  onLogoutConfirm() {
+    this.setData({ showLogout: false })
+    wx.showToast({ title: '已退出', icon: 'success' })
+  },
+
+  onLogoutCancel() {
+    this.setData({ showLogout: false })
   }
 })

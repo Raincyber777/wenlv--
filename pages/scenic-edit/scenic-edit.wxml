@@ -69,7 +69,7 @@
 
       <view class="field">
         <text class="field-label">景点名称 <text class="req">*</text></text>
-        <input class="text-input" placeholder="如：建福宫" value="{{form.name}}" data-field="name" bindinput="onFieldInput" maxlength="20" />
+        <t-input value="{{form.name}}" placeholder="如：建福宫" maxlength="{{20}}" clearable="{{true}}" data-field="name" bind:change="onFieldInput" />
       </view>
 
       <view class="field-row">
@@ -84,13 +84,13 @@
         </view>
         <view class="field flex-1">
           <text class="field-label">距山门距离</text>
-          <input class="text-input" placeholder="如：480m / 1.2km" value="{{form.dist}}" data-field="dist" bindinput="onFieldInput" />
+          <t-input value="{{form.dist}}" placeholder="如：480m / 1.2km" clearable="{{true}}" data-field="dist" bind:change="onFieldInput" />
         </view>
       </view>
 
       <view class="field">
         <text class="field-label">详细地址 <text class="req">*</text></text>
-        <input class="text-input" placeholder="如：青城山前山半山 · 天师洞" value="{{form.address}}" data-field="address" bindinput="onFieldInput" />
+        <t-input value="{{form.address}}" placeholder="如：青城山前山半山 · 天师洞" clearable="{{true}}" data-field="address" bind:change="onFieldInput" />
       </view>
 
       <view class="field">
@@ -163,10 +163,10 @@
             <text class="facility-sub">{{form.toilet ? '有 · 游客可见' : '无 · 游客端隐藏'}}</text>
           </view>
         </view>
-        <switch checked="{{form.toilet}}" color="#10b981" data-field="toilet" bindchange="onSwitch" />
+        <t-switch value="{{form.toilet}}" data-field="toilet" bind:change="onSwitch" />
       </view>
       <view wx:if="{{form.toilet}}" class="field">
-        <input class="text-input" placeholder="如：洞口东侧公厕 · 含无障碍卫生间" value="{{form.toiletDesc}}" data-field="toiletDesc" bindinput="onFieldInput" />
+        <t-input value="{{form.toiletDesc}}" placeholder="如：洞口东侧公厕 · 含无障碍卫生间" clearable="{{true}}" data-field="toiletDesc" bind:change="onFieldInput" />
       </view>
 
       <view class="divider"></view>
@@ -179,10 +179,10 @@
             <text class="facility-sub">{{form.food ? '有 · 游客可见' : '无 · 游客端隐藏'}}</text>
           </view>
         </view>
-        <switch checked="{{form.food}}" color="#10b981" data-field="food" bindchange="onSwitch" />
+        <t-switch value="{{form.food}}" data-field="food" bind:change="onSwitch" />
       </view>
       <view wx:if="{{form.food}}" class="field">
-        <input class="text-input" placeholder="如：道家素斋 / 盖碗茶 / 山间小卖部" value="{{form.foodDesc}}" data-field="foodDesc" bindinput="onFieldInput" />
+        <t-input value="{{form.foodDesc}}" placeholder="如：道家素斋 / 盖碗茶 / 山间小卖部" clearable="{{true}}" data-field="foodDesc" bind:change="onFieldInput" />
       </view>
     </view>
 
@@ -207,12 +207,12 @@
 
       <view class="field">
         <text class="field-label">音频标题</text>
-        <input class="text-input" placeholder="如：建福宫·道教宫观导览" value="{{form.audioTitle}}" data-field="audioTitle" bindinput="onFieldInput" />
+        <t-input value="{{form.audioTitle}}" placeholder="如：建福宫·道教宫观导览" clearable="{{true}}" data-field="audioTitle" bind:change="onFieldInput" />
       </view>
       <view class="field-row">
         <view class="field flex-1">
           <text class="field-label">音频时长</text>
-          <input class="text-input" placeholder="如：08:45" value="{{form.audio}}" data-field="audio" bindinput="onFieldInput" />
+          <t-input value="{{form.audio}}" placeholder="如：08:45" clearable="{{true}}" data-field="audio" bind:change="onFieldInput" />
         </view>
         <view class="field flex-1">
           <text class="field-label">快捷选音频</text>
@@ -223,7 +223,7 @@
       </view>
       <view class="field">
         <text class="field-label">音频链接 / 本地路径</text>
-        <input class="text-input mono" placeholder="https://…mp3 或选择本地音频" value="{{form.audioUrl}}" data-field="audioUrl" bindinput="onFieldInput" />
+        <t-input value="{{form.audioUrl}}" placeholder="https://…mp3 或选择本地音频" clearable="{{true}}" data-field="audioUrl" bind:change="onFieldInput" />
         <text class="field-hint" wx:if="{{audioTip}}">{{audioTip}}</text>
       </view>
     </view>
@@ -238,7 +238,7 @@
             <text class="facility-sub">{{form.open ? '开放中 · 游客端可预约游览' : '维护中 · 游客端显示暂停开放'}}</text>
           </view>
         </view>
-        <switch checked="{{form.open}}" color="#10b981" data-field="open" bindchange="onSwitch" />
+        <t-switch value="{{form.open}}" data-field="open" bind:change="onSwitch" />
       </view>
     </view>
 
@@ -248,16 +248,15 @@
         <view class="card-bar bar-blue"></view>
         <text class="card-title">景点介绍</text>
       </view>
-      <textarea
-        class="textarea"
-        placeholder="介绍景点的历史背景、看点、游玩建议，将同步展示到游客端…"
+      <t-textarea
         value="{{form.intro}}"
+        placeholder="介绍景点的历史背景、看点、游玩建议，将同步展示到游客端…"
+        maxlength="{{500}}"
+        indicator="{{true}}"
+        autosize="{{true}}"
         data-field="intro"
-        bindinput="onFieldInput"
-        maxlength="500"
-        auto-height
+        bind:change="onFieldInput"
       />
-      <text class="field-hint">{{form.intro.length || 0}} / 500</text>
     </view>
 
     <view class="bottom-pad"></view>
@@ -265,11 +264,23 @@
 
   <!-- 底部操作 -->
   <view class="edit-footer">
-    <view wx:if="{{isEdit}}" class="btn-danger" bindtap="onDelete">
-      <text>删除</text>
+    <view wx:if="{{isEdit}}" class="footer-del-wrap">
+      <t-button theme="danger" variant="outline" size="large" block t-class="footer-del" bind:tap="onDelete">删除</t-button>
     </view>
-    <view class="btn-save" bindtap="onSave">
-      <text>{{isEdit ? '💾 保存修改' : '＋ 确认新增'}}</text>
+    <view class="footer-save-wrap">
+      <t-button theme="primary" size="large" block t-class="footer-save" bind:tap="onSave">{{isEdit ? '保存修改' : '确认新增'}}</t-button>
     </view>
   </view>
 </view>
+
+<!-- 删除确认弹窗 -->
+<t-dialog
+  visible="{{showDelete}}"
+  title="删除景点"
+  content="确定删除「{{form.name}}」吗？删除后游客端将不再展示。"
+  confirm-btn="{{ { content: '删除', theme: 'danger' } }}"
+  cancel-btn="取消"
+  bind:confirm="onConfirmDelete"
+  bind:cancel="onCancelDelete"
+  bind:close="onCancelDelete"
+/>

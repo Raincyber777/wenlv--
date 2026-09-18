@@ -48,7 +48,7 @@
 
       <view class="field">
         <text class="field-label">消息标题 <text class="req">*</text></text>
-        <input class="text-input" placeholder="如：前山索道例行维护通知" value="{{form.title}}" data-field="title" bindinput="onFieldInput" maxlength="40" />
+        <t-input value="{{form.title}}" placeholder="如：前山索道例行维护通知" maxlength="{{40}}" clearable="{{true}}" data-field="title" bind:change="onFieldInput" />
       </view>
 
       <view class="field-row">
@@ -63,7 +63,7 @@
         </view>
         <view class="field flex-1">
           <text class="field-label">发布时间</text>
-          <input class="text-input" placeholder="如：09-13 18:00" value="{{form.time}}" data-field="time" bindinput="onFieldInput" />
+          <t-input value="{{form.time}}" placeholder="如：09-13 18:00" clearable="{{true}}" data-field="time" bind:change="onFieldInput" />
         </view>
       </view>
 
@@ -105,16 +105,15 @@
         <view class="card-bar bar-blue"></view>
         <text class="card-title">消息正文</text>
       </view>
-      <textarea
-        class="textarea"
-        placeholder="填写正文内容，将同步推送到游客端消息详情…"
+      <t-textarea
         value="{{form.content}}"
+        placeholder="填写正文内容，将同步推送到游客端消息详情…"
+        maxlength="{{1000}}"
+        indicator="{{true}}"
+        autosize="{{true}}"
         data-field="content"
-        bindinput="onFieldInput"
-        maxlength="1000"
-        auto-height
+        bind:change="onFieldInput"
       />
-      <text class="field-hint">{{form.content.length || 0}} / 1000</text>
     </view>
 
     <!-- 推送与状态 -->
@@ -132,7 +131,7 @@
             <text class="facility-sub">{{form.push ? '保存后将立即推送提醒全部游客' : '仅保存到消息列表，不弹提醒'}}</text>
           </view>
         </view>
-        <switch checked="{{form.push}}" color="#10b981" data-field="push" bindchange="onSwitch" />
+        <t-switch value="{{form.push}}" data-field="push" bind:change="onSwitch" />
       </view>
 
       <view class="divider"></view>
@@ -145,7 +144,7 @@
             <text class="facility-sub">{{form.unread ? '游客端显示红点提醒' : '静默显示，不打扰游客'}}</text>
           </view>
         </view>
-        <switch checked="{{form.unread}}" color="#10b981" data-field="unread" bindchange="onSwitch" />
+        <t-switch value="{{form.unread}}" data-field="unread" bind:change="onSwitch" />
       </view>
     </view>
 
@@ -154,11 +153,23 @@
 
   <!-- 底部操作 -->
   <view class="edit-footer">
-    <view wx:if="{{isEdit}}" class="btn-danger" bindtap="onDelete">
-      <text>删除</text>
+    <view wx:if="{{isEdit}}" class="footer-del-wrap">
+      <t-button theme="danger" variant="outline" size="large" block t-class="footer-del" bind:tap="onDelete">删除</t-button>
     </view>
-    <view class="btn-save" bindtap="onSave">
-      <text>{{isEdit ? '💾 保存修改' : '📨 发布消息'}}</text>
+    <view class="footer-save-wrap">
+      <t-button theme="primary" size="large" block t-class="footer-save" bind:tap="onSave">{{isEdit ? '保存修改' : '发布消息'}}</t-button>
     </view>
   </view>
 </view>
+
+<!-- 删除确认弹窗 -->
+<t-dialog
+  visible="{{showDelete}}"
+  title="删除消息"
+  content="确定删除「{{form.title}}」吗？游客端将同步撤回该消息。"
+  confirm-btn="{{ { content: '删除', theme: 'danger' } }}"
+  cancel-btn="取消"
+  bind:confirm="onConfirmDelete"
+  bind:cancel="onCancelDelete"
+  bind:close="onCancelDelete"
+/>

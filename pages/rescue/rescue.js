@@ -1,5 +1,6 @@
 Page({
   data: {
+    showHandle: false,
     stats: [
       { value: '1', label: '处理中', type: 'red' },
       { value: '28', label: '本月完成', type: 'emerald' },
@@ -19,16 +20,16 @@ Page({
   },
 
   onHandleSOS() {
-    wx.showModal({
-      title: '立即处理',
-      content: '确认开始处理此救援请求？',
-      confirmColor: '#ef4444',
-      success(res) {
-        if (res.confirm) {
-          wx.showToast({ title: '已开始处理', icon: 'success' })
-        }
-      }
-    })
+    this.setData({ showHandle: true })
+  },
+
+  onConfirmHandle() {
+    this.setData({ showHandle: false })
+    wx.showToast({ title: '已开始处理', icon: 'success' })
+  },
+
+  onCancelDialog() {
+    this.setData({ showHandle: false })
   },
 
   onViewLocation() {

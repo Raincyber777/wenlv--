@@ -1,0 +1,71 @@
+.page-stats {
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--bg-tint) 0%, var(--bg) 30%);
+}
+
+/* 顶部导航 */
+.stats-header {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 20rpx 40rpx 16rpx;
+  padding-top: calc(16px + env(safe-area-inset-top));
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+}
+
+.back-btn {
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -8rpx;
+}
+
+.back-arrow {
+  font-size: 48rpx;
+  color: var(--text-600);
+  line-height: 1;
+}
+
+/* 统计卡片 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16rpx;
+  padding: 32rpx;
+}
+
+.stat-card {
+  border-radius: var(--radius-md);
+  padding: 40rpx 12rpx;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.stat-icon {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 20rpx;
+  margin: 0 auto 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+}
+
+.stat-value {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 700;
+  color: var(--brand-600);
+}
+
+.stat-label {
+  display: block;
+  font-size: 24rpx;
+  color: var(--text-400);
+  margin-top: 8rpx;
+}

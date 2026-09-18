@@ -1,0 +1,23 @@
+<view class="page-stats">
+  <!-- 顶部导航 -->
+  <view class="stats-header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-arrow">‹</text>
+    </view>
+    <view class="header-bar bar-blue"></view>
+    <text class="header-title">数据统计</text>
+  </view>
+
+  <!-- 统计卡片 -->
+  <view class="stats-grid">
+    <view class="stat-card glass" wx:for="{{stats}}" wx:key="label">
+      <view class="stat-icon" style="background:{{item.grad}}">
+        <t-icon name="{{item.icon}}" size="40rpx" color="#ffffff" />
+      </view>
+      <text class="stat-value">{{item.value}}</text>
+      <text class="stat-label">{{item.label}}</text>
+    </view>
+  </view>
+
+  <view class="bottom-space"></view>
+</view>

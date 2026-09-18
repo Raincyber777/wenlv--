@@ -43,6 +43,9 @@
     </view>
   </view>
 
+  <!-- 空状态 -->
+  <t-empty wx:if="{{!filteredList.length}}" class="empty-wrap" description="暂无消息，点击右上角发布" />
+
   <view class="bottom-space"></view>
   <nav-bar current="notice"></nav-bar>
 </view>

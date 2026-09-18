@@ -9,6 +9,7 @@
     "pages/rescue/rescue",
     "pages/notice/notice",
     "pages/notice-edit/notice-edit",
+    "pages/stats/stats",
     "pages/mine/mine"
   ],
   "window": {
@@ -18,7 +19,20 @@
     "backgroundColor": "#f8fafc",
     "enablePullDownRefresh": false
   },
-  "style": "v2",
+  "usingComponents": {
+    "nav-bar": "/components/nav-bar/nav-bar",
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-tag": "tdesign-miniprogram/tag/tag",
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
+    "t-dialog": "tdesign-miniprogram/dialog/dialog",
+    "t-search": "tdesign-miniprogram/search/search",
+    "t-empty": "tdesign-miniprogram/empty/empty",
+    "t-input": "tdesign-miniprogram/input/input",
+    "t-textarea": "tdesign-miniprogram/textarea/textarea",
+    "t-switch": "tdesign-miniprogram/switch/switch"
+  },
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
 }

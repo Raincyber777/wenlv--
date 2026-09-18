@@ -44,7 +44,7 @@
 
       <view class="field">
         <text class="field-label">商品名称 <text class="req">*</text></text>
-        <input class="text-input" placeholder="如：青城道茶礼盒" value="{{form.name}}" data-field="name" bindinput="onFieldInput" maxlength="30" />
+        <t-input value="{{form.name}}" placeholder="如：青城道茶礼盒" maxlength="{{30}}" clearable="{{true}}" data-field="name" bind:change="onFieldInput" />
       </view>
 
       <view class="field">
@@ -60,15 +60,15 @@
       <view class="field-row">
         <view class="field flex-1">
           <text class="field-label">售价 ¥ <text class="req">*</text></text>
-          <input class="text-input" type="digit" placeholder="如：128" value="{{form.price}}" data-field="price" bindinput="onFieldInput" />
+          <t-input type="digit" placeholder="如：128" value="{{form.price}}" data-field="price" bind:change="onFieldInput" />
         </view>
         <view class="field flex-1">
           <text class="field-label">库存 <text class="req">*</text></text>
-          <input class="text-input" type="number" placeholder="如：86" value="{{form.stock}}" data-field="stock" bindinput="onFieldInput" />
+          <t-input type="number" placeholder="如：86" value="{{form.stock}}" data-field="stock" bind:change="onFieldInput" />
         </view>
         <view class="field flex-1">
           <text class="field-label">累计销量</text>
-          <input class="text-input" type="number" placeholder="如：342" value="{{form.sales}}" data-field="sales" bindinput="onFieldInput" />
+          <t-input type="number" placeholder="如：342" value="{{form.sales}}" data-field="sales" bind:change="onFieldInput" />
         </view>
       </view>
 
@@ -135,7 +135,7 @@
             <text class="facility-sub">{{form.on ? '游客端商城可见可购买' : '游客端隐藏该商品，可随时重新上架'}}</text>
           </view>
         </view>
-        <switch checked="{{form.on}}" color="#f59e0b" data-field="on" bindchange="onSwitch" />
+        <t-switch value="{{form.on}}" data-field="on" bind:change="onSwitch" style="--td-switch-checked-color:#f59e0b" />
       </view>
     </view>
 
@@ -145,15 +145,15 @@
         <view class="card-bar bar-blue"></view>
         <text class="card-title">商品详情</text>
       </view>
-      <textarea
-        class="textarea"
-        placeholder="介绍商品工艺、规格、寓意等，将同步展示到游客端商城…"
+      <t-textarea
         value="{{form.desc}}"
-        bindinput="onDescInput"
-        maxlength="500"
-        auto-height
+        placeholder="介绍商品工艺、规格、寓意等，将同步展示到游客端商城…"
+        maxlength="{{500}}"
+        indicator="{{true}}"
+        autosize="{{true}}"
+        data-field="desc"
+        bind:change="onDescInput"
       />
-      <text class="field-hint">{{form.desc.length || 0}} / 500</text>
     </view>
 
     <view class="bottom-pad"></view>
@@ -161,11 +161,23 @@
 
   <!-- 底部操作 -->
   <view class="edit-footer">
-    <view wx:if="{{isEdit}}" class="btn-danger" bindtap="onDelete">
-      <text>删除</text>
+    <view wx:if="{{isEdit}}" class="footer-del-wrap">
+      <t-button theme="danger" variant="outline" size="large" block t-class="footer-del" bind:tap="onDelete">删除</t-button>
     </view>
-    <view class="btn-save" bindtap="onSave">
-      <text>{{isEdit ? '💾 保存修改' : '＋ 确认上架'}}</text>
+    <view class="footer-save-wrap">
+      <t-button theme="primary" size="large" block t-class="footer-save" bind:tap="onSave">{{isEdit ? '保存修改' : '确认上架'}}</t-button>
     </view>
   </view>
 </view>
+
+<!-- 删除确认弹窗 -->
+<t-dialog
+  visible="{{showDelete}}"
+  title="删除商品"
+  content="确定删除「{{form.name}}」吗？删除后游客端商城将不再展示。"
+  confirm-btn="{{ { content: '删除', theme: 'danger' } }}"
+  cancel-btn="取消"
+  bind:confirm="onConfirmDelete"
+  bind:cancel="onCancelDelete"
+  bind:close="onCancelDelete"
+/>

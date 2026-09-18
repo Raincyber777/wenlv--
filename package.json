@@ -1,0 +1,8 @@
+{
+  "name": "wenlv-admin",
+  "version": "1.0.0",
+  "description": "青城山管理端小程序",
+  "dependencies": {
+    "tdesign-miniprogram": "^1.16.1"
+  }
+}
