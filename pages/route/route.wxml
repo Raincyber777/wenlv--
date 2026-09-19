@@ -22,7 +22,7 @@
       <!-- 内容区 -->
       <view class="route-body">
         <view class="route-tags">
-          <text class="route-tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</text>
+          <t-tag wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" theme="{{index === 0 ? 'warning' : 'primary'}}" variant="light" size="small">{{tag}}</t-tag>
         </view>
         <view class="route-meta">
           <text class="route-meta-text">全程 {{item.dist}} · 约{{item.dur}}</text>

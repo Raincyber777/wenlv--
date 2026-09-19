@@ -22,27 +22,43 @@ Page({
   data: {
     filters: ['全部', '前山', '后山'],
     activeFilter: 0,
+    searchKey: '',
     list: [],
     filteredList: []
   },
 
   onLoad() {
-    const list = loadList()
-    this.setData({ list, filteredList: list })
+    this.setData({ list: loadList() })
+    this.applyFilter()
   },
 
   onShow() {
-    const list = loadList()
-    const filter = this.data.filters[this.data.activeFilter]
-    const filteredList = filter === '全部' ? list : list.filter(s => s.zone === filter)
-    this.setData({ list, filteredList })
+    this.setData({ list: loadList() })
+    this.applyFilter()
+  },
+
+  applyFilter() {
+    const { list, filters, activeFilter, searchKey } = this.data
+    const zone = filters[activeFilter]
+    const key = (searchKey || '').trim().toLowerCase()
+    const filteredList = list.filter(s => {
+      const zoneOk = zone === '全部' || s.zone === zone
+      const keyOk = !key ||
+        (s.name || '').toLowerCase().indexOf(key) > -1 ||
+        (s.address || '').toLowerCase().indexOf(key) > -1
+      return zoneOk && keyOk
+    })
+    this.setData({ filteredList })
+  },
+
+  onSearchChange(e) {
+    this.setData({ searchKey: e.detail.value })
+    this.applyFilter()
   },
 
   onFilterTap(e) {
-    const idx = e.currentTarget.dataset.index
-    const filter = this.data.filters[idx]
-    const filteredList = filter === '全部' ? this.data.list : this.data.list.filter(s => s.zone === filter)
-    this.setData({ activeFilter: idx, filteredList })
+    this.setData({ activeFilter: Number(e.currentTarget.dataset.index) })
+    this.applyFilter()
   },
 
   onAdd() {

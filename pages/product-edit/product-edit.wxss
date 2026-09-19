@@ -369,31 +369,8 @@
   border-top: 1px solid rgba(245, 158, 11, 0.12);
 }
 
-.btn-danger {
-  width: 180rpx;
-  height: 88rpx;
-  border-radius: 20rpx;
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  color: #ef4444;
-  font-size: 28rpx;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.btn-save {
-  flex: 1;
-  height: 88rpx;
-  border-radius: 20rpx;
-  background: linear-gradient(to right, #fbbf24, #f97316);
-  color: #fff;
-  font-size: 28rpx;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.footer-save {
+  height: 88rpx !important;
+  background: linear-gradient(to right, #fbbf24, #f97316) !important;
   box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
 }

@@ -21,6 +21,11 @@
     </view>
   </scroll-view>
 
+  <!-- 搜索 -->
+  <view class="search-wrap">
+    <t-search value="{{searchKey}}" placeholder="搜索景点名称 / 地址" shape="round" bind:change="onSearchChange" />
+  </view>
+
   <!-- 景点列表 -->
   <view class="scenic-list">
     <view class="list-card glass scenic-item" wx:for="{{filteredList}}" wx:key="name">
@@ -40,6 +45,9 @@
       </view>
     </view>
   </view>
+
+  <!-- 空状态 -->
+  <t-empty wx:if="{{!filteredList.length}}" class="empty-wrap" description="没有找到相关景点" />
 
   <view class="bottom-space"></view>
   <nav-bar current="scenic"></nav-bar>

@@ -20,27 +20,43 @@ Page({
   data: {
     filters: ['全部', '道教文创', '手作香道', '文创茶礼', '书签印章'],
     activeFilter: 0,
+    searchKey: '',
     list: [],
     filteredList: []
   },
 
   onLoad() {
-    const list = loadList()
-    this.setData({ list, filteredList: list })
+    this.setData({ list: loadList() })
+    this.applyFilter()
   },
 
   onShow() {
-    const list = loadList()
-    const filter = this.data.filters[this.data.activeFilter]
-    const filteredList = filter === '全部' ? list : list.filter(p => p.cat === filter)
-    this.setData({ list, filteredList })
+    this.setData({ list: loadList() })
+    this.applyFilter()
+  },
+
+  applyFilter() {
+    const { list, filters, activeFilter, searchKey } = this.data
+    const cat = filters[activeFilter]
+    const key = (searchKey || '').trim().toLowerCase()
+    const filteredList = list.filter(p => {
+      const catOk = cat === '全部' || p.cat === cat
+      const keyOk = !key ||
+        (p.name || '').toLowerCase().indexOf(key) > -1 ||
+        (p.cat || '').toLowerCase().indexOf(key) > -1
+      return catOk && keyOk
+    })
+    this.setData({ filteredList })
+  },
+
+  onSearchChange(e) {
+    this.setData({ searchKey: e.detail.value })
+    this.applyFilter()
   },
 
   onFilterTap(e) {
-    const idx = e.currentTarget.dataset.index
-    const filter = this.data.filters[idx]
-    const filteredList = filter === '全部' ? this.data.list : this.data.list.filter(p => p.cat === filter)
-    this.setData({ activeFilter: idx, filteredList })
+    this.setData({ activeFilter: Number(e.currentTarget.dataset.index) })
+    this.applyFilter()
   },
 
   onAdd() {

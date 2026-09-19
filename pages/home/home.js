@@ -1,10 +1,10 @@
 Page({
   data: {
     stats: [
-      { label: '今日入园', value: '1,247', icon: 'user', iconBg: 'rgba(16,185,129,0.3)', iconColor: '#6ee7b7', trend: '+12.5%', trendUp: true, trendColor: '#6ee7b7' },
-      { label: '今日营收', value: '¥86,320', icon: 'money', iconBg: 'rgba(245,158,11,0.3)', iconColor: '#fcd34d', trend: '+8.3%', trendUp: true, trendColor: '#6ee7b7' },
-      { label: '文创订单', value: '328', icon: 'bag', iconBg: 'rgba(59,130,246,0.3)', iconColor: '#93c5fd', trend: '-2.1%', trendUp: false, trendColor: '#fca5a5' },
-      { label: '救援呼叫', value: '3', sub: '1 处理中', subPulse: true, icon: 'sos', iconBg: 'rgba(239,68,68,0.3)', iconColor: '#fca5a5', note: '需关注', noteColor: '#fcd34d' }
+      { label: '今日入园', value: '1,247', icon: 'user', iconName: 'user', iconBg: 'rgba(16,185,129,0.3)', iconColor: '#6ee7b7', trend: '+12.5%', trendUp: true, trendColor: '#6ee7b7' },
+      { label: '今日营收', value: '¥86,320', icon: 'money', iconName: 'wallet', iconBg: 'rgba(245,158,11,0.3)', iconColor: '#fcd34d', trend: '+8.3%', trendUp: true, trendColor: '#6ee7b7' },
+      { label: '文创订单', value: '328', icon: 'bag', iconName: 'shop', iconBg: 'rgba(59,130,246,0.3)', iconColor: '#93c5fd', trend: '-2.1%', trendUp: false, trendColor: '#fca5a5' },
+      { label: '救援呼叫', value: '3', sub: '1 处理中', subPulse: true, icon: 'sos', iconName: 'call', iconBg: 'rgba(239,68,68,0.3)', iconColor: '#fca5a5', note: '需关注', noteColor: '#fcd34d' }
     ],
     trendBars: [
       { day: '周六', height: '55', grad: 'from-emerald-200 to-emerald-100', isToday: false },

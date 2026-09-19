@@ -82,6 +82,7 @@ function saveList(list) {
 
 Page({
   data: {
+    showDelete: false,
     isEdit: false,
     editId: '',
     zones: ZONES,
@@ -332,17 +333,18 @@ Page({
 
   onDelete() {
     if (!this.data.isEdit) return
-    wx.showModal({
-      title: '删除景点',
-      content: `确定删除「${this.data.form.name}」吗？删除后游客端将不再展示。`,
-      confirmColor: '#ef4444',
-      success: (res) => {
-        if (!res.confirm) return
-        const list = getList().filter(s => String(s.id) !== String(this.data.editId) && s.name !== this.data.editId)
-        saveList(list)
-        wx.showToast({ title: '已删除', icon: 'success' })
-        setTimeout(() => wx.navigateBack({ delta: 1 }), 600)
-      }
-    })
+    this.setData({ showDelete: true })
+  },
+
+  onConfirmDelete() {
+    this.setData({ showDelete: false })
+    const list = getList().filter(s => String(s.id) !== String(this.data.editId) && s.name !== this.data.editId)
+    saveList(list)
+    wx.showToast({ title: '已删除', icon: 'success' })
+    setTimeout(() => wx.navigateBack({ delta: 1 }), 600)
+  },
+
+  onCancelDelete() {
+    this.setData({ showDelete: false })
   }
 })

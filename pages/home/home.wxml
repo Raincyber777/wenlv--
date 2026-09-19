@@ -22,10 +22,7 @@
         <view class="stat-card glass-dark" wx:for="{{stats}}" wx:key="label">
           <view class="stat-head">
             <view class="stat-icon" style="background:{{item.iconBg}}">
-              <text class="stat-emoji" wx:if="{{item.icon === 'user'}}">👤</text>
-              <text class="stat-emoji" wx:elif="{{item.icon === 'money'}}">💰</text>
-              <text class="stat-emoji" wx:elif="{{item.icon === 'bag'}}">🛍️</text>
-              <text class="stat-emoji" wx:elif="{{item.icon === 'sos'}}">🆘</text>
+              <t-icon name="{{item.iconName}}" size="36rpx" color="#ffffff" />
             </view>
             <text class="stat-label">{{item.label}}</text>
           </view>
