@@ -1,0 +1,47 @@
+<view class="page-design">
+  <view class="design-hero">
+    <view class="deco-circle hero-circle-one"></view>
+    <view class="deco-circle hero-circle-two"></view>
+    <view class="design-hero-content">
+      <view class="design-kicker">QINGCHENG · EXPERIENCE</view>
+      <text class="design-title">个性化设计</text>
+      <text class="design-subtitle">配置游客端首页的展示内容与视觉风格</text>
+      <view class="design-status"><view class="status-dot"></view><text>当前配置已发布</text></view>
+    </view>
+  </view>
+
+  <view class="content">
+    <view class="section-heading">
+      <view class="heading-bar"></view>
+      <view><text class="section-title">首页预览</text><text class="section-desc">实时查看用户端效果</text></view>
+    </view>
+
+    <view class="preview-card glass">
+      <view class="preview-topbar"><view class="preview-weather"><text class="weather-icon">☀️</text><view><text class="weather-temp">24°</text><text class="weather-desc">晴 · 青城山</text></view></view><text class="preview-time">游客端首页</text></view>
+      <view class="preview-title"><text class="preview-green">青城山</text><text class="preview-dark"> · 慢游指南</text><text class="preview-caption">山水入画，清幽自在</text></view>
+      <view class="preview-ai"><view class="preview-ai-head"><view class="preview-ai-avatar">✦</view><view><text class="preview-ai-name">AI 小青</text><text class="preview-ai-desc">你的青城山专属向导</text></view></view><view class="preview-ai-input"><text>想去哪里看看？</text><text class="preview-send">发送</text></view><view class="preview-chips"><text>热门景点</text><text>路线推荐</text><text>美食攻略</text></view></view>
+    </view>
+
+    <view class="section-heading settings-heading"><view class="heading-bar"></view><view><text class="section-title">视觉主题</text><text class="section-desc">延续用户端清新自然的绿色品牌调性</text></view></view>
+    <view class="theme-card glass">
+      <view class="form-row"><view><text class="form-label">主色调</text><text class="form-help">用于按钮、标题和高亮元素</text></view><view class="color-value"><view class="color-swatch" style="background:{{form.primaryColor}}"></view><text>{{form.primaryColor}}</text></view></view>
+      <view class="color-list"><view wx:for="{{colors}}" wx:key="value" class="color-option {{form.primaryColor === item.value ? 'selected' : ''}}" style="background:{{item.value}}" data-color="{{item.value}}" bindtap="onColorTap"><text wx:if="{{form.primaryColor === item.value}}">✓</text></view></view>
+      <view class="form-row switch-row"><view><text class="form-label">首页 AI 导游</text><text class="form-help">向游客提供智能问答入口</text></view><switch checked="{{form.aiEnabled}}" color="#00a870" data-field="aiEnabled" bindchange="onSwitchChange"></switch></view>
+      <view class="form-row switch-row"><view><text class="form-label">显示天气信息</text><text class="form-help">在首页顶部展示实时天气</text></view><switch checked="{{form.weatherEnabled}}" color="#00a870" data-field="weatherEnabled" bindchange="onSwitchChange"></switch></view>
+    </view>
+
+    <view class="section-heading settings-heading"><view class="heading-bar"></view><view><text class="section-title">首页文案</text><text class="section-desc">让每一次打开都更有青城山的味道</text></view></view>
+    <view class="copy-card glass">
+      <view class="input-group"><text class="form-label">首页主标题</text><input value="{{form.title}}" maxlength="20" placeholder="请输入首页主标题" data-field="title" bindinput="onInputChange" /></view>
+      <view class="input-group"><text class="form-label">副标题</text><input value="{{form.subtitle}}" maxlength="30" placeholder="请输入副标题" data-field="subtitle" bindinput="onInputChange" /></view>
+      <view class="input-group"><text class="form-label">AI 欢迎语</text><textarea value="{{form.aiGreeting}}" maxlength="60" placeholder="请输入 AI 导游欢迎语" data-field="aiGreeting" bindinput="onInputChange"></textarea></view>
+    </view>
+
+    <view class="section-heading settings-heading"><view class="heading-bar"></view><view><text class="section-title">快捷服务</text><text class="section-desc">调整用户端常用功能的显示顺序</text></view></view>
+    <view class="service-card glass"><view wx:for="{{services}}" wx:key="id" class="service-item"><view class="service-icon" style="background:{{item.grad}}">{{item.icon}}</view><text class="service-name">{{item.name}}</text><text class="service-state">{{item.enabled ? '已展示' : '已隐藏'}}</text><switch checked="{{item.enabled}}" color="#00a870" data-index="{{index}}" bindchange="onServiceChange"></switch></view></view>
+
+    <view class="action-bar"><button class="reset-btn" bindtap="onReset">恢复默认</button><button class="save-btn" bindtap="onSave">保存并发布</button></view>
+    <view class="bottom-space"></view>
+  </view>
+  <nav-bar current="mine"></nav-bar>
+</view>

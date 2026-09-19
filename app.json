@@ -9,13 +9,14 @@
     "pages/rescue/rescue",
     "pages/notice/notice",
     "pages/notice-edit/notice-edit",
+    "pages/design/design",
     "pages/mine/mine"
   ],
   "window": {
     "navigationBarTitleText": "青城山管理端",
-    "navigationBarBackgroundColor": "#064e3b",
+    "navigationBarBackgroundColor": "#00a870",
     "navigationBarTextStyle": "white",
-    "backgroundColor": "#f8fafc",
+    "backgroundColor": "#f5f8f6",
     "enablePullDownRefresh": false
   },
   "style": "v2",

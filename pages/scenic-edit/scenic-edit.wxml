@@ -186,47 +186,6 @@
       </view>
     </view>
 
-    <!-- 介绍音频 -->
-    <view class="card glass">
-      <view class="card-head">
-        <view class="card-bar bar-orange"></view>
-        <text class="card-title">介绍音频</text>
-        <text class="card-tip">游客端语音导览</text>
-      </view>
-
-      <view class="audio-player">
-        <view class="audio-cover {{playing ? 'audio-playing' : ''}}">
-          <text>{{playing ? '⏸' : '▶'}}</text>
-        </view>
-        <view class="audio-info" bindtap="togglePlay">
-          <text class="audio-title">{{form.audioTitle || '未命名音频'}}</text>
-          <text class="audio-sub">{{form.audioUrl ? (playing ? '正在试听…点击暂停' : '点击试听音频') : '暂无音频，请添加'}}</text>
-        </view>
-        <text wx:if="{{form.audioUrl}}" class="audio-clear" bindtap="onClearAudio">✕</text>
-      </view>
-
-      <view class="field">
-        <text class="field-label">音频标题</text>
-        <input class="text-input" placeholder="如：建福宫·道教宫观导览" value="{{form.audioTitle}}" data-field="audioTitle" bindinput="onFieldInput" />
-      </view>
-      <view class="field-row">
-        <view class="field flex-1">
-          <text class="field-label">音频时长</text>
-          <input class="text-input" placeholder="如：08:45" value="{{form.audio}}" data-field="audio" bindinput="onFieldInput" />
-        </view>
-        <view class="field flex-1">
-          <text class="field-label">快捷选音频</text>
-          <view class="btn-ghost sm" bindtap="onChooseAudio">
-            <text>🎙 选择音频</text>
-          </view>
-        </view>
-      </view>
-      <view class="field">
-        <text class="field-label">音频链接 / 本地路径</text>
-        <input class="text-input mono" placeholder="https://…mp3 或选择本地音频" value="{{form.audioUrl}}" data-field="audioUrl" bindinput="onFieldInput" />
-        <text class="field-hint" wx:if="{{audioTip}}">{{audioTip}}</text>
-      </view>
-    </view>
 
     <!-- 开放状态 -->
     <view class="card glass open-card {{form.open ? '' : 'closed'}}">

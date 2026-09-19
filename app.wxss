@@ -1,18 +1,24 @@
 /* ============ Design Tokens ============ */
 page {
-  --brand-900: #064e3b;
-  --brand-700: #047857;
-  --brand-600: #059669;
-  --brand-500: #10b981;
-  --brand-400: #34d399;
-  --brand-300: #6ee7b7;
-  --teal: #14b8a6;
-  --bg: #f8fafc;
-  --bg-tint: #ecfdf5;
-  --text-900: #1f2937;
-  --text-600: #4b5563;
-  --text-400: #9ca3af;
-  --text-300: #d1d5db;
+  --brand-900: #005437;
+  --brand-700: #007049;
+  --brand-600: #008c5c;
+  --brand-500: #00a870;
+  --brand-400: #2ec48f;
+  --brand-300: #78dfba;
+  --teal: #0d9488;
+  --bg: #f5f8f6;
+  --bg-tint: #e3f9ee;
+  --text-900: #1f2d28;
+  --text-600: #4a5c54;
+  --text-400: #9aaca3;
+  --text-300: #c0cdc7;
+  /* 与用户端 wenlv-project 保持一致的 TDesign 品牌变量 */
+  --td-brand-color: #00a870;
+  --td-brand-color-active: #008c5c;
+  --td-brand-color-light: #e3f9ee;
+  --td-bg-color-page: #f5f8f6;
+  --td-bg-color-container: #ffffff;
   --amber: #f59e0b;
   --red: #ef4444;
   --blue: #3b82f6;
